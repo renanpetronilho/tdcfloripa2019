@@ -10,7 +10,7 @@ spring:
       write_dates_as_timestamps: false
   data:
     mongodb:
-      uri: mongodb://c3p0:builders;123@tdc-shard-00-00-yhphf.gcp.mongodb.net:27017,tdc-shard-00-01-yhphf.gcp.mongodb.net:27017,tdc-shard-00-02-yhphf.gcp.mongodb.net:27017/bank_tdc?replicaSet=TDC-shard-0&ssl=true&authSource=admin
+      uri: mongo_uri
   sleuth:
     trace-id128: true
     sampler:
