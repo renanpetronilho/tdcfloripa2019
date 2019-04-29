@@ -1,0 +1,63 @@
+spring:
+  application:
+    name: account-api
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+  data:
+    mongodb:
+      uri: mongodb://c3p0:builders;123@tdc-shard-00-00-yhphf.gcp.mongodb.net:27017,tdc-shard-00-01-yhphf.gcp.mongodb.net:27017,tdc-shard-00-02-yhphf.gcp.mongodb.net:27017/bank_tdc?replicaSet=TDC-shard-0&ssl=true&authSource=admin
+  sleuth:
+    trace-id128: true
+    sampler:
+      probability: 1.0
+    http.legacy.enabled: true
+
+# Adds trace and span IDs to logs (when a trace is in progress)
+logging:
+  level:
+    org:
+      mongodb:
+        driver: error
+
+management:
+  server.ssl.enabled: false
+  info:
+    build.enabled: true
+    defaults.enabled: true
+  endpoints:
+    web.base-path: /actuator
+    web.exposure.include: '*'
+    shutdown.enabled: true
+    health:
+      show-details: always
+  endpoint:
+    health.enabled: true
+    metrics.enabled: true
+    heapdump.enabled: true
+    mongo.enabled: true
+  health:
+    defaults.enabled: true
+    diskspace.enabled: true
+    jms.enabled: false
+    mongo.enabled: true
+    rabbit.enabled: false
+    redis.enabled: false
+info:
+  app:
+    name: @name@
+    description: @project.description@
+  build:
+    groupId: @project.groupId@
+    artifact: @project.artifactId@
+    name: @project.name@
+    version: @project.version@
+  env:
+    java:
+      vendor: ${java.specification.vendor}
+      vm-name: ${java.vm.name}
+      runtime-version: ${java.runtime.version}
